@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神聖的邏輯</title>
+<style>
+  :root{
+    --paper:#f6f3ee;
+    --paper-deep:#efeae1;
+    --ink:#4a4238;
+    --ink-soft:#7a7268;
+    --gold:#b8a06a;
+    --line:#ddd5c6;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--paper);
+    color:var(--ink);
+  }
+
+  body{
+    font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+    line-height:2;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .veil{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255,255,255,0.55), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 100%, rgba(184,160,106,0.08), transparent 60%);
+    z-index:0;
+  }
+
+  .page{
+    position:relative;
+    z-index:1;
+    max-width:680px;
+    margin:0 auto;
+    padding:9vh 8vw 14vh;
+  }
+
+  .eyebrow{
+    text-align:center;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.32em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-bottom:1.1rem;
+  }
+
+  .eyebrow .zh-name{
+    display:block;
+    font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+    text-transform:none;
+    letter-spacing:0.28em;
+    font-size:0.8rem;
+    color:var(--gold);
+  }
+
+  h1{
+    text-align:center;
+    font-weight:500;
+    font-size:clamp(1.6rem, 4vw, 2.15rem);
+    letter-spacing:0.06em;
+    margin:0 0 0.5rem;
+    color:var(--ink);
+  }
+
+  h1 .sub{
+    display:block;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.95rem;
+    font-weight:300;
+    letter-spacing:0.18em;
+    color:var(--ink-soft);
+    margin-top:0.9rem;
+  }
+
+  .tags{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:0.6rem;
+    margin:1.6rem 0 0;
+  }
+  .tag{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:0.35rem 0.9rem;
+  }
+
+  .diamond{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:1rem;
+    margin:3.2rem 0;
+    color:var(--gold);
+    opacity:0.7;
+  }
+  .diamond::before, .diamond::after{
+    content:"";
+    height:1px;
+    width:64px;
+    background:var(--line);
+  }
+
+  /* language toggle */
+  .toggle-row{
+    display:flex;
+    justify-content:center;
+    gap:0.6rem;
+    margin-bottom:3rem;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .toggle-btn{
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--ink-soft);
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    padding:0.5rem 1.1rem;
+    border-radius:999px;
+    cursor:pointer;
+    transition:all 0.25s ease;
+  }
+  .toggle-btn.active{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+
+  .block{
+    margin:0 0 2.8rem;
+  }
+
+  .body-text p{
+    font-size:1.05rem;
+    color:var(--ink);
+    margin:0;
+    text-align:justify;
+    letter-spacing:0.01em;
+  }
+
+  .body-text p:first-of-type::first-letter{
+    font-size:1.9rem;
+    color:var(--gold);
+    padding-right:2px;
+  }
+
+  .en{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.92rem;
+    font-style:italic;
+    font-weight:300;
+    color:var(--ink-soft);
+    line-height:1.85;
+    letter-spacing:0.005em;
+    text-align:justify;
+    margin:0;
+  }
+
+  .source{
+    margin-top:5rem;
+    text-align:center;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    color:var(--ink-soft);
+  }
+  .source .loc{
+    display:block;
+    margin-top:0.4rem;
+  }
+
+  .note{
+    max-width:480px;
+    margin:2.2rem auto 0;
+    padding-top:1.6rem;
+    border-top:1px solid var(--line);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.74rem;
+    line-height:1.9;
+    letter-spacing:0.02em;
+    color:var(--ink-soft);
+    text-align:center;
+  }
+
+  body.mode-zh .en{ display:none; }
+
+  @media (max-width:480px){
+    .page{ padding:8vh 7vw 10vh; }
+  }
+</style>
+</head>
+<body class="mode-zh">
+<div class="veil"></div>
+<div class="page">
+
+  <div class="eyebrow">
+    <span class="zh-name">錫呂‧瑪塔吉‧涅瑪拉‧德維　靈性語錄</span>
+  </div>
+  <h1>神聖的邏輯
+    <span class="sub">The Divine Logic</span>
+  </h1>
+
+  <div class="tags">
+    <span class="tag">神聖的邏輯</span>
+    <span class="tag">Brahmachaitanya</span>
+    <span class="tag">生命能量</span>
+  </div>
+
+  <div class="diamond">❖</div>
+
+  <div class="toggle-row">
+    <button class="toggle-btn" data-mode="zh">中文</button>
+    <button class="toggle-btn" data-mode="both">中英對照</button>
+  </div>
+
+  <div class="block">
+    <div class="body-text"><p>有些人開始以為，透過邏輯推理，就能找出答案。他們找不到的，因為你所在的那個層次，邏輯是行不通的。你所在的，是無所不在的生命能量(Brahmachaitanya)運作的層次，而它有它自己的邏輯。所以，不要試圖用邏輯去解決任何事情。</p></div>
+    <p class="en">Some people start thinking that by logical deductions they can find out things. They cannot, because you are at a level that logic doesn't work. You are at a level where Brahmachaitanya works, and it has its own logic. So do not try to resolve anything by logic.</p>
+  </div>
+
+  <div class="block">
+    <div class="body-text"><p>首先，你與靈（Spirit）的連結會因此失去，你與喜悅的連結會失去，你與生命能量的連結也會失去。所以，這裡沒有邏輯上的結論，而是由神聖的邏輯接管一切。這並不表示你是個奴隸，恰恰相反，你是神的國度裡尊貴的賓客。</p></div>
+    <p class="en">First thing your connection with the Spirit will be lost, your connection with the joy will be lost, your connection with the vibrations will be lost. So there is no logical conclusion, but the Divine logic takes over. That doesn't mean that you are a slave, but on the contrary you are the great guest in the Kingdom of God.</p>
+  </div>
+
+  <div class="source">
+    1990年12月12日‧印度 India
+    <span class="loc">霎哈嘉瑜伽在全世界各國推廣皆為公益免費</span>
+  </div>
+
+  <div class="note">
+    備註：Brahmachaitanya 常被說明為「瀰漫宇宙的生命能量／振動」的整體，Brahma（無所不在）+ Chaitanya（覺性/意識）。
+  </div>
+
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.toggle-btn');
+  const body = document.body;
+
+  function setMode(mode){
+    body.className = 'mode-' + mode;
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => setMode(btn.dataset.mode));
+  });
+
+  setMode('zh');
+</script>
+
+</body>
+</html>
