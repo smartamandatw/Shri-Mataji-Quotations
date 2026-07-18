@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>靈性語錄 ‧ 錫呂‧瑪塔吉‧涅瑪拉‧德維</title>
+<style>
+  :root{
+    --paper:#f6f3ee;
+    --paper-deep:#efeae1;
+    --ink:#4a4238;
+    --ink-soft:#7a7268;
+    --gold:#b8a06a;
+    --line:#ddd5c6;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--paper);
+    color:var(--ink);
+  }
+
+  body{
+    font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+    line-height:2;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .veil{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255,255,255,0.55), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 100%, rgba(184,160,106,0.08), transparent 60%);
+    z-index:0;
+  }
+
+  .page{
+    position:relative;
+    z-index:1;
+    max-width:680px;
+    margin:0 auto;
+    padding:9vh 8vw 14vh;
+  }
+
+  .eyebrow{
+    text-align:center;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.32em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-bottom:1.1rem;
+  }
+
+  .eyebrow .zh-name{
+    display:block;
+    font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+    text-transform:none;
+    letter-spacing:0.28em;
+    font-size:0.8rem;
+    color:var(--gold);
+  }
+
+  h1{
+    text-align:center;
+    font-weight:500;
+    font-size:clamp(1.6rem, 4vw, 2.15rem);
+    letter-spacing:0.06em;
+    margin:0 0 0.5rem;
+    color:var(--ink);
+  }
+
+  h1 .sub{
+    display:block;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.95rem;
+    font-weight:300;
+    letter-spacing:0.18em;
+    color:var(--ink-soft);
+    margin-top:0.9rem;
+  }
+
+  .diamond{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:1rem;
+    margin:3.2rem 0;
+    color:var(--gold);
+    opacity:0.7;
+  }
+  .diamond::before, .diamond::after{
+    content:"";
+    height:1px;
+    width:64px;
+    background:var(--line);
+  }
+
+  /* ===== spotlight: random quote on load ===== */
+  .spotlight{
+    margin:0 0 3.2rem;
+    padding:2.4rem 2rem;
+    background:var(--paper-deep);
+    border-left:2px solid var(--gold);
+    opacity:0;
+    transform:translateY(6px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .spotlight.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .spotlight-label{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    color:var(--gold);
+    margin-bottom:0.9rem;
+    opacity:0.85;
+  }
+  .spotlight-zh{
+    font-size:1.05rem;
+    line-height:1.95;
+    color:var(--ink);
+    margin:0 0 1rem;
+  }
+  .spotlight-en{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.85rem;
+    font-style:italic;
+    font-weight:300;
+    color:var(--ink-soft);
+    line-height:1.8;
+    margin:0 0 1.3rem;
+  }
+  .spotlight-link{
+    display:inline-block;
+    font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+    font-size:0.85rem;
+    letter-spacing:0.06em;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--gold);
+    padding-bottom:2px;
+  }
+
+  /* ===== entry list ===== */
+  .entries{
+    display:flex;
+    flex-direction:column;
+    gap:1.2rem;
+  }
+
+  .entry{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    padding:1.7rem 1.8rem;
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    border-left:2px solid var(--gold);
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .entry:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(58,53,46,0.06);
+  }
+
+  .entry-title{
+    font-size:1.15rem;
+    font-weight:500;
+    letter-spacing:0.04em;
+    color:var(--ink);
+  }
+  .entry-title .en{
+    display:block;
+    margin-top:0.3rem;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.8rem;
+    font-weight:300;
+    font-style:italic;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+
+  .entry-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:1rem;
+  }
+
+  .entry-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.5rem;
+  }
+  .entry-tag{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.62rem;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:0.25rem 0.7rem;
+  }
+
+  .entry-arrow{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.9rem;
+    color:var(--gold);
+    opacity:0.8;
+    flex-shrink:0;
+    margin-left:1rem;
+  }
+
+  /* ===== placeholder for future entries ===== */
+  .entry-placeholder{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:1.7rem 1.8rem;
+    border:1px dashed var(--line);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+    opacity:0.55;
+  }
+
+  .count{
+    text-align:center;
+    margin-top:3.2rem;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.7rem;
+    letter-spacing:0.14em;
+    color:var(--ink-soft);
+    opacity:0.7;
+  }
+
+  @media (max-width:480px){
+    .page{ padding:8vh 7vw 10vh; }
+    .entry{ padding:1.4rem 1.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="veil"></div>
+<div class="page">
+
+  <div class="eyebrow">
+    <span class="zh-name">錫呂‧瑪塔吉‧涅瑪拉‧德維　靈性語錄</span>
+  </div>
+  <h1>語錄選集
+    <span class="sub">Selected Quotations</span>
+  </h1>
+
+  <div class="diamond">❖</div>
+
+  <div class="spotlight" id="spotlight">
+    <div class="spotlight-label">專屬於你的今日靈性滋養</div>
+    <p class="spotlight-zh" id="spotlight-zh"></p>
+    <p class="spotlight-en" id="spotlight-en"></p>
+    <a class="spotlight-link" id="spotlight-link" href="#">閱讀全文 →</a>
+  </div>
+
+  <!-- ===========================================================
+       ENTRY LIST
+       新增語錄頁面時，複製一組 <a class="entry">…</a> 貼在最後一筆
+       之後即可，依日期新到舊排列。
+       =========================================================== -->
+  <div class="entries">
+
+    <a class="entry" href="我們內在的內涵.html">
+      <div class="entry-title">我們內在的內涵
+        <span class="en">The Content Within Us</span>
+      </div>
+      <div class="entry-meta">
+        <div class="entry-tags">
+          <span class="entry-tag">內涵</span>
+          <span class="entry-tag">生命能量</span>
+          <span class="entry-tag">溫柔謙遜</span>
+        </div>
+        <span class="entry-arrow">→</span>
+      </div>
+    </a>
+
+    <a class="entry" href="純潔的欲望.html">
+      <div class="entry-title">純潔的欲望
+        <span class="en">Shuddha-Iccha</span>
+      </div>
+      <div class="entry-meta">
+        <div class="entry-tags">
+          <span class="entry-tag">純潔的欲望</span>
+          <span class="entry-tag">昆達里尼</span>
+          <span class="entry-tag">左脈</span>
+        </div>
+        <span class="entry-arrow">→</span>
+      </div>
+    </a>
+
+    <a class="entry" href="神聖的邏輯.html">
+      <div class="entry-title">神聖的邏輯
+        <span class="en">The Divine Logic</span>
+      </div>
+      <div class="entry-meta">
+        <div class="entry-tags">
+          <span class="entry-tag">神聖的邏輯</span>
+          <span class="entry-tag">Brahmachaitanya</span>
+          <span class="entry-tag">生命能量</span>
+        </div>
+        <span class="entry-arrow">→</span>
+      </div>
+    </a>
+
+    <a class="entry" href="淨化的力量.html">
+      <div class="entry-title">淨化的力量
+        <span class="en">A Cleansing Force</span>
+      </div>
+      <div class="entry-meta">
+        <div class="entry-tags">
+          <span class="entry-tag">昆達里尼</span>
+          <span class="entry-tag">純淨</span>
+          <span class="entry-tag">靈</span>
+        </div>
+        <span class="entry-arrow">→</span>
+      </div>
+    </a>
+
+    <a class="entry" href="靈性優先.html">
+      <div class="entry-title">靈性優先
+        <span class="en">Let's Pay Attention to Our Spiritual Life</span>
+      </div>
+      <div class="entry-meta">
+        <div class="entry-tags">
+          <span class="entry-tag">物質</span>
+          <span class="entry-tag">惰性</span>
+          <span class="entry-tag">自我</span>
+        </div>
+        <span class="entry-arrow">→</span>
+      </div>
+    </a>
+
+    <a class="entry" href="覺醒的跑道.html">
+      <div class="entry-title">覺醒的跑道
+        <span class="en">It Depends on What Sort of Runway You Have</span>
+      </div>
+      <div class="entry-meta">
+        <div class="entry-tags">
+          <span class="entry-tag">昆達里尼</span>
+          <span class="entry-tag">覺醒</span>
+          <span class="entry-tag">跑道</span>
+        </div>
+        <span class="entry-arrow">→</span>
+      </div>
+    </a>
+
+    <a class="entry" href="同心協力.html">
+      <div class="entry-title">同心協力
+        <span class="en">Let's Do It Together</span>
+      </div>
+      <div class="entry-meta">
+        <div class="entry-tags">
+          <span class="entry-tag">合作</span>
+          <span class="entry-tag">集體</span>
+          <span class="entry-tag">善意</span>
+        </div>
+        <span class="entry-arrow">→</span>
+      </div>
+    </a>
+
+    <a class="entry" href="至高真理.html">
+      <div class="entry-title">至高真理
+        <span class="en">The Greatest Truths for a Sahaja Yogi</span>
+      </div>
+      <div class="entry-meta">
+        <div class="entry-tags">
+          <span class="entry-tag">自我</span>
+          <span class="entry-tag">集體意識</span>
+          <span class="entry-tag">信心</span>
+        </div>
+        <span class="entry-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- 之後新增的語錄頁面，複製上面任一組 <a class="entry">…</a>
+         貼在這裡，改標題／英文副標／連結／標籤即可 -->
+
+    <div class="entry-placeholder">‧ 更多語錄，陸續增加中 ‧</div>
+
+  </div>
+
+  <div class="count">共 8 篇</div>
+
+</div>
+
+<script>
+  /* ===========================================================
+     隨機語錄 QUOTES 陣列
+     新增語錄頁面時，在下面加一組對應的 {zh, en, link}，
+     跟 entries 清單同步更新即可。
+     =========================================================== */
+  const quotes = [
+    {
+      zh: "那麼，重點究竟是什麼？非常重要的一點——是我們內在的內涵。我們內在擁有什麼，這才是重點。這一切都是我們內在所擁有的外在表現……所以，我們內在的內涵，是我們必須去看見的。",
+      en: "Then what is it? Very important – it's the content within us. What do we have within us is the point.",
+      link: "我們內在的內涵.html"
+    },
+    {
+      zh: "它有一種特質，就是無論你做什麼，都會反彈回到你自己身上。唯有靈性上的成長不會如此。它會綻放，它芬芳，它美麗。與自己同在，是如此美好的一種體驗，彷彿你走進了一座美麗的天堂花園。",
+      en: "It has a quality that whatever you do, repels back on you. Only the spiritual growth does not. It flowers, it is fragrant, it is beautiful.",
+      link: "純潔的欲望.html"
+    },
+    {
+      zh: "你所在的，是無所不在的生命能量(Brahmachaitanya)運作的層次，而它有它自己的邏輯。所以，不要試圖用邏輯去解決任何事情。",
+      en: "You are at a level where Brahmachaitanya works, and it has its own logic. So do not try to resolve anything by logic.",
+      link: "神聖的邏輯.html"
+    },
+    {
+      zh: "這是因為人類仍處於無知之中——但一旦他們知道自己真正是什麼，他們會驚訝於自己：原來他們是純淨的靈！",
+      en: "It is because human beings are ignorant – but once they know what they are, they'll be surprised at themselves: they are pure Spirit!",
+      link: "淨化的力量.html"
+    },
+    {
+      zh: "如果你習慣坐椅子，你就無法坐在地上；如果你習慣了舒適的生活，你就再也過不了不舒適的生活。物質，就是這樣在不知不覺間奴役著你。",
+      en: "If you use a chair then you cannot sit on the ground. If you are used to a comfortable life, you cannot live in an uncomfortable life. Sort of it slaves you.",
+      link: "靈性優先.html"
+    },
+    {
+      zh: "你開始看見覺醒，或者說，感覺到覺醒。但這一切發生得非常快，只在一瞬之間，快到有時候你什麼都沒察覺，只感覺到一股清涼的微風開始在你身體裡流動。",
+      en: "You just start seeing the awakening, or you can say, feel the awakening. But it is such a quick thing, a split of a second, that sometimes you miss everything except that you see the cool breeze has started flowing through you.",
+      link: "覺醒的跑道.html"
+    },
+    {
+      zh: "這不是關於個人的興旺，而是需要大家齊心協力，帶著合作、愛、友誼，以及對所有人的善意，共同完成的集體事業。",
+      en: "It's not about individual prosperity, it's collective work to be done together with cooperation, love, friendship and benevolence for all.",
+      link: "同心協力.html"
+    },
+    {
+      zh: "對一位霎哈嘉瑜伽士而言，最大的損失是什麼？在心中失去母親的形象。",
+      en: "What is the greatest loss for a Sahaja Yogi? To lose the image of Mother in your heart.",
+      link: "至高真理.html"
+    }
+  ];
+
+  const pick = quotes[Math.floor(Math.random() * quotes.length)];
+  document.getElementById('spotlight-zh').textContent = pick.zh;
+  document.getElementById('spotlight-en').textContent = pick.en;
+  document.getElementById('spotlight-link').href = pick.link;
+
+  requestAnimationFrame(() => {
+    document.getElementById('spotlight').classList.add('show');
+  });
+</script>
+
+</body>
+</html>
