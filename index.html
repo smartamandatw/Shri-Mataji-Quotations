@@ -440,7 +440,11 @@
   let currentPage = 1;
 
   // ---- 產生 entries 卡片 ----
-  const entries = QUOTES_DATA.map(q => {
+  // 卡片顯示順序：quotes-data.js 陣列「最後新增」的項目會排在最前面。
+  // 也就是說，以後每天新增一篇語錄，只要照慣例把新物件貼在
+  // QUOTES_DATA 陣列的最後面，網頁就會自動把它顯示在第一筆，
+  // 不用手動搬動順序，也不用改這裡的程式。
+  const entries = QUOTES_DATA.slice().reverse().map(q => {
     const a = document.createElement('a');
     a.className = 'entry';
     a.href = q.file;
