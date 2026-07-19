@@ -325,8 +325,6 @@
     <span class="sub">Selected Quotations</span>
   </h1>
 
-  <div class="diamond">❖</div>
-
   <div class="spotlight" id="spotlight">
     <div class="spotlight-label">專屬於你的今日靈性滋養</div>
     <p class="spotlight-zh" id="spotlight-zh"></p>
@@ -344,441 +342,84 @@
 
   <!-- ===========================================================
        ENTRY LIST
-       新增語錄頁面時，複製一組 <a class="entry">…</a> 貼在最後一筆
-       之後即可，依日期新到舊排列。每個 entry 需加上 data-tags
-       （用「、」分隔），與卡片內顯示的標籤保持一致。
+       這裡的卡片會在載入時由 quotes-data.js 自動產生，
+       新增／修改語錄時，只需要編輯 quotes-data.js 裡的 QUOTES_DATA
+       陣列即可，不用再手動改這裡的 HTML。
        =========================================================== -->
-  <div class="entries" id="entries">
+  <div class="entries" id="entries"></div>
 
-    <a class="entry" href="19891008_The Content Within Us.html">
-      <div class="entry-title">我們內在的內涵
-        <span class="en">The Content Within Us</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">內涵</span>
-          <span class="entry-tag">生命能量</span>
-          <span class="entry-tag">溫柔謙遜</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
+  <div class="entry-placeholder" id="entry-placeholder">‧ 更多語錄，陸續增加中 ‧</div>
 
-    <a class="entry" href="20010321_Shuddha-Iccha.html">
-      <div class="entry-title">純潔的欲望
-        <span class="en">Shuddha-Iccha</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">純潔的欲望</span>
-          <span class="entry-tag">昆達里尼</span>
-          <span class="entry-tag">左脈</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
+  <div class="count" id="count-label"></div>
 
-    <a class="entry" href="19901212_The Divine Logic.html">
-      <div class="entry-title">神聖的邏輯
-        <span class="en">The Divine Logic</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">神聖的邏輯</span>
-          <span class="entry-tag">Brahmachaitanya</span>
-          <span class="entry-tag">生命能量</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="20000912_A Cleansing Force.html">
-      <div class="entry-title">淨化的力量
-        <span class="en">A Cleansing Force</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">昆達里尼</span>
-          <span class="entry-tag">純淨</span>
-          <span class="entry-tag">靈</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19800927_Let's Pay Attention to Our Spiritual Life.html">
-      <div class="entry-title">靈性優先
-        <span class="en">Let's Pay Attention to Our Spiritual Life</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">物質</span>
-          <span class="entry-tag">惰性</span>
-          <span class="entry-tag">自我</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19810406_It Depends on What Sort of Runway You Have.html">
-      <div class="entry-title">覺醒的跑道
-        <span class="en">It Depends on What Sort of Runway You Have</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">昆達里尼</span>
-          <span class="entry-tag">覺醒</span>
-          <span class="entry-tag">跑道</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19851215_Let's Do It Together.html">
-      <div class="entry-title">同心協力
-        <span class="en">Let's Do It Together</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">合作</span>
-          <span class="entry-tag">集體</span>
-          <span class="entry-tag">善意</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="1996_The Greatest Truths for a Sahaja Yogi.html">
-      <div class="entry-title">至高真理
-        <span class="en">The Greatest Truths for a Sahaja Yogi</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">自我</span>
-          <span class="entry-tag">集體意識</span>
-          <span class="entry-tag">信心</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19941002_The Spirit Enlightens the Brain.html">
-      <div class="entry-title">頭腦受靈所啟迪
-        <span class="en">The Spirit Enlightens the Brain</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">靈</span>
-          <span class="entry-tag">覺悟</span>
-          <span class="entry-tag">臣服</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="Flirting Gives Home to Spirits.html">
-      <div class="entry-title">眉來眼去，靈體棲身
-        <span class="en">Flirting Gives Home to Spirits</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">額輪</span>
-          <span class="entry-tag">調情</span>
-          <span class="entry-tag">集體潛意識</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19780408_On the Eyes and the Agnya Chakra.html">
-      <div class="entry-title">清澈之眼
-        <span class="en">On the Eyes and the Agnya Chakra</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">額輪</span>
-          <span class="entry-tag">眼睛</span>
-          <span class="entry-tag">靈體</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19850329_The Realisation Is Just, to Begin With.html">
-      <div class="entry-title">覺醒只是開始
-        <span class="en">The Realisation Is Just, to Begin With</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">覺醒</span>
-          <span class="entry-tag">謙卑</span>
-          <span class="entry-tag">救贖</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19801116_The Banner of New Age.html">
-      <div class="entry-title">新時代的旗幟
-        <span class="en">The Banner of New Age</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">覺醒</span>
-          <span class="entry-tag">轉化</span>
-          <span class="entry-tag">光</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19920303_You Get the Answer on Your Finger-tips.html">
-      <div class="entry-title">答案就在指尖
-        <span class="en">You Get the Answer on Your Finger-tips</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">注意力</span>
-          <span class="entry-tag">無疑惑的境界</span>
-          <span class="entry-tag">生命能量</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19801130_It's An Actualization.html">
-      <div class="entry-title">親身的實證
-        <span class="en">It's An Actualization</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">集體意識</span>
-          <span class="entry-tag">心</span>
-          <span class="entry-tag">靈</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19840710_Truth Not Ego.html">
-      <div class="entry-title">真理，不是自我
-        <span class="en">Truth Not Ego</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">真理</span>
-          <span class="entry-tag">自我</span>
-          <span class="entry-tag">才智</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19821101_The Time Has Come.html">
-      <div class="entry-title">時候已經到了
-        <span class="en">The Time Has Come</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">抉擇</span>
-          <span class="entry-tag">恩典</span>
-          <span class="entry-tag">物質</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19940724_Truth Is Love.html">
-      <div class="entry-title">真理即是愛
-        <span class="en">Truth Is Love</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">真理</span>
-          <span class="entry-tag">愛</span>
-          <span class="entry-tag">頂輪</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19830512_Wisdom.html">
-      <div class="entry-title">智慧
-        <span class="en">Wisdom</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">智慧</span>
-          <span class="entry-tag">才智</span>
-          <span class="entry-tag">明辨</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <a class="entry" href="19851231_Three Mantras.html">
-      <div class="entry-title">三句箴言
-        <span class="en">Three Mantras</span>
-      </div>
-      <div class="entry-meta">
-        <div class="entry-tags">
-          <span class="entry-tag">喜悅</span>
-          <span class="entry-tag">無念</span>
-          <span class="entry-tag">臣服</span>
-        </div>
-        <span class="entry-arrow">→</span>
-      </div>
-    </a>
-
-    <!-- 之後新增的語錄頁面，複製上面任一組 <a class="entry">…</a>
-         貼在這裡，改標題／英文副標／連結／標籤即可 -->
-
-    <div class="entry-placeholder">‧ 更多語錄，陸續增加中 ‧</div>
-
-  </div>
-
-  <div class="count">共 20 篇</div>
 
 </div>
 
+<script src="quotes-data.js"></script>
 <script>
   /* ===========================================================
-     隨機語錄 QUOTES 陣列
-     新增語錄頁面時，在下面加一組對應的 {zh, en, link}，
-     跟 entries 清單同步更新即可。
+     以下內容全部由 quotes-data.js 的 QUOTES_DATA 陣列產生。
+     日後新增／修改語錄，只需要編輯 quotes-data.js，
+     這裡的清單、標籤篩選、隨機語錄都會自動同步，不用再改這個檔案。
      =========================================================== */
-  const quotes = [
-    {
-      zh: "那麼，重點究竟是什麼？非常重要的一點——是我們內在的內涵。我們內在擁有什麼，這才是重點。這一切都是我們內在所擁有的外在表現……所以，我們內在的內涵，是我們必須去看見的。",
-      en: "Then what is it? Very important – it's the content within us. What do we have within us is the point.",
-      link: "19891008_The Content Within Us.html"
-    },
-    {
-      zh: "它有一種特質，就是無論你做什麼，都會反彈回到你自己身上。唯有靈性上的成長不會如此。它會綻放，它芬芳，它美麗。與自己同在，是如此美好的一種體驗，彷彿你走進了一座美麗的天堂花園。",
-      en: "It has a quality that whatever you do, repels back on you. Only the spiritual growth does not. It flowers, it is fragrant, it is beautiful.",
-      link: "20010321_Shuddha-Iccha.html"
-    },
-    {
-      zh: "你所在的，是無所不在的生命能量(Brahmachaitanya)運作的層次，而它有它自己的邏輯。所以，不要試圖用邏輯去解決任何事情。",
-      en: "You are at a level where Brahmachaitanya works, and it has its own logic. So do not try to resolve anything by logic.",
-      link: "19901212_The Divine Logic.html"
-    },
-    {
-      zh: "這是因為人類仍處於無知之中——但一旦他們知道自己真正是什麼，他們會驚訝於自己：原來他們是純淨的靈！",
-      en: "It is because human beings are ignorant – but once they know what they are, they'll be surprised at themselves: they are pure Spirit!",
-      link: "20000912_A Cleansing Force.html"
-    },
-    {
-      zh: "如果你習慣坐椅子，你就無法坐在地上；如果你習慣了舒適的生活，你就再也過不了不舒適的生活。物質，就是這樣在不知不覺間奴役著你。",
-      en: "If you use a chair then you cannot sit on the ground. If you are used to a comfortable life, you cannot live in an uncomfortable life. Sort of it slaves you.",
-      link: "19800927_Let's Pay Attention to Our Spiritual Life.html"
-    },
-    {
-      zh: "你開始看見覺醒，或者說，感覺到覺醒。但這一切發生得非常快，只在一瞬之間，快到有時候你什麼都沒察覺，只感覺到一股清涼的微風開始在你身體裡流動。",
-      en: "You just start seeing the awakening, or you can say, feel the awakening. But it is such a quick thing, a split of a second, that sometimes you miss everything except that you see the cool breeze has started flowing through you.",
-      link: "19810406_It Depends on What Sort of Runway You Have.html"
-    },
-    {
-      zh: "這不是關於個人的興旺，而是需要大家齊心協力，帶著合作、愛、友誼，以及對所有人的善意，共同完成的集體事業。",
-      en: "It's not about individual prosperity, it's collective work to be done together with cooperation, love, friendship and benevolence for all.",
-      link: "19851215_Let's Do It Together.html"
-    },
-    {
-      zh: "對一位霎哈嘉瑜伽士而言，最大的損失是什麼？在心中失去母親的形象。",
-      en: "What is the greatest loss for a Sahaja Yogi? To lose the image of Mother in your heart.",
-      link: "1996_The Greatest Truths for a Sahaja Yogi.html"
-    },
-    {
-      zh: "頭腦完全臣服於靈，於是靈便照亮了頭腦。",
-      en: "The brain gets surrendered completely to the Spirit, so that the Spirit enlightens the brain.",
-      link: "19941002_The Spirit Enlightens the Brain.html"
-    },
-    {
-      zh: "現代社會並不把調情視為一種惡習，但事實上，沒有什麼比這個習慣更具傷害性了。",
-      en: "Modern society does not regard flirting as a vice, but nothing is more grievously harmful than this habit.",
-      link: "Flirting Gives Home to Spirits.html"
-    },
-    {
-      zh: "眼睛應該絕對地清澈，只朝外流動，不從他人那裡接收任何東西進入眼睛。",
-      en: "Eyes should be absolutely clear, going outward, not receiving anything into the eyes from others.",
-      link: "19780408_On the Eyes and the Agnya Chakra.html"
-    },
-    {
-      zh: "如果你想要成為更偉大的人，就先讓自己謙卑下來。謙卑，是非常非常重要的。",
-      en: "If you have to be something greater humble down yourself. Humbling down is very very important.",
-      link: "19850329_The Realisation Is Just, to Begin With.html"
-    },
-    {
-      zh: "就像一棵樹，當它盛開時，花朵的香氣會在周圍形成一種獨特的氛圍，吸引所有的蜜蜂前來採蜜。",
-      en: "Like a tree, when it is blossoming, the fragrance of the blossom creates a different type of aura around itself such that it attracts all the bees around to gather the honey.",
-      link: "19801116_The Banner of New Age.html"
-    },
-    {
-      zh: "這份注意力，無論你放在哪裡，就像遙控器一樣，都會發揮效用。",
-      en: "This attention, wherever you put it, like a remote control it works.",
-      link: "19920303_You Get the Answer on Your Finger-tips.html"
-    },
-    {
-      zh: "棲息在那顆心裡、在那心蓮之中的，是你的靈，是你的阿特瑪。",
-      en: "What resides in that heart, in the lotus of that heart is your Spirit, is your Atma.",
-      link: "19801130_It's An Actualization.html"
-    },
-    {
-      zh: "覺醒之後，來到你面前的真理，才是真正純粹的真理，而不是你的自我。",
-      en: "After Realization, the truth that comes to you is the real, pure truth and is not your ego.",
-      link: "19840710_Truth Not Ego.html"
-    },
-    {
-      zh: "你要嘛，過著一種在物質層面上奢華的生活；要嘛，過著一種充滿神恩寵的、真正富足的生活。這兩者，你必須擇一而行。",
-      en: "Either you lead a life which is luxurious on the material level or you lead a luxurious life of God's blessings. One of these two you have to choose.",
-      link: "19821101_The Time Has Come.html"
-    },
-    {
-      zh: "而當真理真正進來的那一刻，你會驚訝地發現：真理就是愛，愛就是真理，是純粹的愛。",
-      en: "And when the truth comes in, you are surprised that truth is love and love is truth, pure love.",
-      link: "19940724_Truth Is Love.html"
-    },
-    {
-      zh: "要明白，智慧高於才智，明辨高於爭辯。",
-      en: "Understand that wisdom is higher than intellect and discretion is higher than debating.",
-      link: "19830512_Wisdom.html"
-    },
-    {
-      zh: "在情緒上，你應該洋溢著喜悅——喜悅，就是你的情緒。在行動上，你應該保持無念；在提升的過程中，你應該保持臣服。",
-      en: "In emotions you should be bubbling with joy. Joy is your emotion. In action you should be thoughtless and in ascent you should be surrendered.",
-      link: "19851231_Three Mantras.html"
-    }
-  ];
 
-  const pick = quotes[Math.floor(Math.random() * quotes.length)];
-  document.getElementById('spotlight-zh').textContent = pick.zh;
-  document.getElementById('spotlight-en').textContent = pick.en;
-  document.getElementById('spotlight-link').href = pick.link;
-
-  requestAnimationFrame(() => {
-    document.getElementById('spotlight').classList.add('show');
-  });
-
-  /* ===========================================================
-     標籤篩選功能
-     標籤直接從每篇 entry 卡片內既有的 .entry-tag 讀取，
-     不需要另外維護一份標籤清單；新增語錄時只要在卡片內
-     加上 <span class="entry-tag">…</span>，就會自動出現在篩選列。
-     =========================================================== */
   const entriesEl = document.getElementById('entries');
-  const entries = Array.from(entriesEl.querySelectorAll('.entry'));
   const filterBar = document.getElementById('filter-bar');
   const filterStatus = document.getElementById('filter-status');
-  const placeholder = entriesEl.querySelector('.entry-placeholder');
-  const originalCount = entries.length;
+  const placeholder = document.getElementById('entry-placeholder');
+  const countLabel = document.getElementById('count-label');
+  const originalCount = QUOTES_DATA.length;
 
-  // 讀取每篇 entry 的標籤，順便記住第一次出現的順序
+  // ---- 產生 entries 卡片 ----
+  const entries = QUOTES_DATA.map(q => {
+    const a = document.createElement('a');
+    a.className = 'entry';
+    a.href = q.file;
+    a.dataset.tags = q.tags.join('\u3001');
+
+    const title = document.createElement('div');
+    title.className = 'entry-title';
+    title.append(q.zhTitle);
+    const en = document.createElement('span');
+    en.className = 'en';
+    en.textContent = q.enTitle;
+    title.appendChild(en);
+
+    const meta = document.createElement('div');
+    meta.className = 'entry-meta';
+
+    const tagsWrap = document.createElement('div');
+    tagsWrap.className = 'entry-tags';
+    q.tags.forEach(tag => {
+      const tagEl = document.createElement('span');
+      tagEl.className = 'entry-tag';
+      tagEl.textContent = tag;
+      tagEl.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setActiveTag(tag === activeTag ? null : tag);
+        filterBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      tagsWrap.appendChild(tagEl);
+    });
+
+    const arrow = document.createElement('span');
+    arrow.className = 'entry-arrow';
+    arrow.textContent = '\u2192';
+
+    meta.appendChild(tagsWrap);
+    meta.appendChild(arrow);
+    a.appendChild(title);
+    a.appendChild(meta);
+    entriesEl.appendChild(a);
+    return a;
+  });
+
+  // ---- 標籤篩選列 ----
   const tagOrder = [];
   const tagSeen = new Set();
-  entries.forEach(entry => {
-    const tags = Array.from(entry.querySelectorAll('.entry-tag')).map(t => t.textContent.trim());
-    entry.dataset.tags = tags.join('、');
-    tags.forEach(tag => {
+  QUOTES_DATA.forEach(q => {
+    q.tags.forEach(tag => {
       if (!tagSeen.has(tag)) {
         tagSeen.add(tag);
         tagOrder.push(tag);
@@ -802,7 +443,7 @@
   function applyFilter(){
     let shown = 0;
     entries.forEach(entry => {
-      const tags = entry.dataset.tags.split('、');
+      const tags = entry.dataset.tags.split('\u3001');
       const match = !activeTag || tags.includes(activeTag);
       entry.classList.toggle('is-hidden', !match);
       entry.querySelectorAll('.entry-tag').forEach(t => {
@@ -824,9 +465,8 @@
       filterStatus.textContent = '';
     }
 
-    const countEl = document.querySelector('.count');
-    if (countEl){
-      countEl.textContent = activeTag
+    if (countLabel){
+      countLabel.textContent = activeTag
         ? `顯示 ${shown} / ${originalCount} 篇`
         : `共 ${originalCount} 篇`;
     }
@@ -838,22 +478,20 @@
     applyFilter();
   }
 
-  // 卡片內的標籤本身也可以直接點擊篩選
-  entries.forEach(entry => {
-    entry.querySelectorAll('.entry-tag').forEach(tagEl => {
-      tagEl.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const tag = tagEl.textContent.trim();
-        setActiveTag(tag === activeTag ? null : tag);
-        filterBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-  });
-
   renderFilterBar();
   applyFilter();
+
+  // ---- 隨機語錄 spotlight ----
+  const pick = QUOTES_DATA[Math.floor(Math.random() * QUOTES_DATA.length)];
+  document.getElementById('spotlight-zh').textContent = pick.spotlightZh;
+  document.getElementById('spotlight-en').textContent = pick.spotlightEn;
+  document.getElementById('spotlight-link').href = pick.file;
+
+  requestAnimationFrame(() => {
+    document.getElementById('spotlight').classList.add('show');
+  });
 </script>
+
 
 </body>
 </html>
