@@ -197,7 +197,7 @@
   }
 </style>
 </head>
-<body class="mode-zh">
+<body class="mode-zh" data-quote-id="19851231_Three Mantras">
 <div class="veil"></div>
 <div class="page">
 
@@ -208,11 +208,7 @@
     <span class="sub">Three Mantras</span>
   </h1>
 
-  <div class="tags">
-    <span class="tag">喜悅</span>
-    <span class="tag">無念</span>
-    <span class="tag">臣服</span>
-  </div>
+  <div class="tags"></div>
 
   <div class="diamond">❖</div>
 
@@ -234,6 +230,21 @@
 
 </div>
 
+<script src="quotes-data.js"></script>
+<script>
+  (function(){
+    var pageId = document.body.getAttribute('data-quote-id');
+    var data = (typeof QUOTES_DATA !== 'undefined' ? QUOTES_DATA : []).find(function(q){ return q.id === pageId; });
+    if (data && data.tags) {
+      var tagsEl = document.querySelector('.tags');
+      if (tagsEl) {
+        tagsEl.innerHTML = data.tags.map(function(t){
+          return '<span class="tag">' + t + '</span>';
+        }).join('');
+      }
+    }
+  })();
+</script>
 <script>
   const buttons = document.querySelectorAll('.toggle-btn');
   const body = document.body;

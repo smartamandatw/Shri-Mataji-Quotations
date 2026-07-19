@@ -212,7 +212,7 @@
   }
 </style>
 </head>
-<body class="mode-zh">
+<body class="mode-zh" data-quote-id="19800927_Let's Pay Attention to Our Spiritual Life">
 <div class="veil"></div>
 <div class="page">
 
@@ -223,11 +223,7 @@
     <span class="sub">Let's Pay Attention to Our Spiritual Life</span>
   </h1>
 
-  <div class="tags">
-    <span class="tag">物質</span>
-    <span class="tag">惰性</span>
-    <span class="tag">自我</span>
-  </div>
+  <div class="tags"></div>
 
   <div class="diamond">❖</div>
 
@@ -263,6 +259,21 @@
 
 </div>
 
+<script src="quotes-data.js"></script>
+<script>
+  (function(){
+    var pageId = document.body.getAttribute('data-quote-id');
+    var data = (typeof QUOTES_DATA !== 'undefined' ? QUOTES_DATA : []).find(function(q){ return q.id === pageId; });
+    if (data && data.tags) {
+      var tagsEl = document.querySelector('.tags');
+      if (tagsEl) {
+        tagsEl.innerHTML = data.tags.map(function(t){
+          return '<span class="tag">' + t + '</span>';
+        }).join('');
+      }
+    }
+  })();
+</script>
 <script>
   const buttons = document.querySelectorAll('.toggle-btn');
   const body = document.body;

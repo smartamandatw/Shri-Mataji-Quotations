@@ -212,7 +212,7 @@
   }
 </style>
 </head>
-<body class="mode-zh">
+<body class="mode-zh" data-quote-id="19851215_Let's Do It Together">
 <div class="veil"></div>
 <div class="page">
 
@@ -223,11 +223,7 @@
     <span class="sub">Let's Do It Together</span>
   </h1>
 
-  <div class="tags">
-    <span class="tag">合作</span>
-    <span class="tag">集體</span>
-    <span class="tag">善意</span>
-  </div>
+  <div class="tags"></div>
 
   <div class="diamond">❖</div>
 
@@ -253,6 +249,21 @@
 
 </div>
 
+<script src="quotes-data.js"></script>
+<script>
+  (function(){
+    var pageId = document.body.getAttribute('data-quote-id');
+    var data = (typeof QUOTES_DATA !== 'undefined' ? QUOTES_DATA : []).find(function(q){ return q.id === pageId; });
+    if (data && data.tags) {
+      var tagsEl = document.querySelector('.tags');
+      if (tagsEl) {
+        tagsEl.innerHTML = data.tags.map(function(t){
+          return '<span class="tag">' + t + '</span>';
+        }).join('');
+      }
+    }
+  })();
+</script>
 <script>
   const buttons = document.querySelectorAll('.toggle-btn');
   const body = document.body;
