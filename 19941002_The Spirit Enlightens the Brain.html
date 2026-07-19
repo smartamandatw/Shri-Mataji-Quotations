@@ -204,6 +204,38 @@
     margin-top:0.4rem;
   }
 
+  .quote-nav{
+    display:flex;
+    justify-content:space-between;
+    gap:1.5rem;
+    margin-top:4rem;
+    padding-top:1.8rem;
+    border-top:1px solid var(--line);
+  }
+  .quote-nav a{
+    max-width:46%;
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+    transition:color 0.2s ease;
+  }
+  .quote-nav a:hover{
+    color:var(--ink);
+  }
+  .quote-nav .dir{
+    display:block;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    color:var(--gold);
+    margin-bottom:0.4rem;
+  }
+  .quote-nav .nav-next{
+    margin-left:auto;
+    text-align:right;
+  }
+
   .note{
     max-width:480px;
     margin:2.2rem auto 0;
@@ -283,9 +315,42 @@
     備註：中脈（Sushumna）是連結頭腦與靈的通道；瑪哈拉克希米、濕婆、梵天分別是霎哈嘉瑜伽中代表淨化、純淨意識與行動創造的三種原理；生殖輪（Swadishthana）則與創造力、思考力有關。
   </div>
 
+  <nav class="quote-nav" id="quote-nav"></nav>
+
 </div>
 
 <script src="quotes-data.js"></script>
+<script>
+  (function(){
+    var pageId = document.body.getAttribute('data-quote-id');
+    var all = (typeof QUOTES_DATA !== 'undefined' ? QUOTES_DATA : []);
+    // 顯示順序跟首頁一致：陣列最後一筆＝首頁第一張，
+    // 所以把陣列反轉後，「上一篇」是反轉陣列中的前一項，
+    // 「下一篇」是反轉陣列中的後一項。
+    var ordered = all.slice().reverse();
+    var idx = ordered.findIndex(function(q){ return q.id === pageId; });
+    if (idx === -1) return;
+
+    var prevItem = idx > 0 ? ordered[idx - 1] : null;
+    var nextItem = idx < ordered.length - 1 ? ordered[idx + 1] : null;
+
+    var navEl = document.getElementById('quote-nav');
+    if (!navEl) return;
+
+    var html = '';
+    if (prevItem) {
+      html += '<a class="nav-prev" href="' + prevItem.file + '"><span class="dir">\u2039 \u4e0a\u4e00\u7bc7</span>' + prevItem.zhTitle + '</a>';
+    } else {
+      html += '<span></span>';
+    }
+    if (nextItem) {
+      html += '<a class="nav-next" href="' + nextItem.file + '"><span class="dir">\u4e0b\u4e00\u7bc7 \u203a</span>' + nextItem.zhTitle + '</a>';
+    } else {
+      html += '<span></span>';
+    }
+    navEl.innerHTML = html;
+  })();
+</script>
 <script>
   (function(){
     var pageId = document.body.getAttribute('data-quote-id');
