@@ -169,14 +169,14 @@ const QUOTES_DATA = [
     spotlightEn: "And when the truth comes in, you are surprised that truth is love and love is truth, pure love."
   },
   {
-    id: "Flirting Gives Home to Spirits",
-    file: "Flirting Gives Home to Spirits.html",
-    zhTitle: "眉來眼去，靈體棲身",
-    enTitle: "Flirting Gives Home to Spirits",
-    date: "",
-    tags: ["額輪", "調情", "集體潛意識"],
-    spotlightZh: "現代社會並不把調情視為一種惡習，但事實上，沒有什麼比這個習慣更具傷害性了。",
-    spotlightEn: "Modern society does not regard flirting as a vice, but nothing is more grievously harmful than this habit."
+    id: "19941002_The Spirit Enlightens the Brain",
+    file: "19941002_The Spirit Enlightens the Brain.html",
+    zhTitle: "頭腦受靈所啟迪",
+    enTitle: "The Spirit Enlightens the Brain",
+    date: "1994.10.02",
+    tags: ["靈", "覺悟", "臣服"],
+    spotlightZh: "頭腦完全臣服於靈，於是靈便照亮了頭腦。",
+    spotlightEn: "The brain gets surrendered completely to the Spirit, so that the Spirit enlightens the brain."
   },
   {
     id: "1996_The Greatest Truths for a Sahaja Yogi",
@@ -209,13 +209,13 @@ const QUOTES_DATA = [
     spotlightEn: "It has a quality that whatever you do, repels back on you. Only the spiritual growth does not. It flowers, it is fragrant, it is beautiful."
   },
   {
-    id: "19941002_The Spirit Enlightens the Brain",
-    file: "19941002_The Spirit Enlightens the Brain.html",
-    zhTitle: "頭腦受靈所啟迪",
-    enTitle: "The Spirit Enlightens the Brain",
-    date: "1994.10.02",
-    tags: ["靈", "覺悟", "臣服"],
-    spotlightZh: "頭腦完全臣服於靈，於是靈便照亮了頭腦。",
-    spotlightEn: "The brain gets surrendered completely to the Spirit, so that the Spirit enlightens the brain."
+    id: "Flirting Gives Home to Spirits",
+    file: "Flirting Gives Home to Spirits.html",
+    zhTitle: "眉來眼去，靈體棲身",
+    enTitle: "Flirting Gives Home to Spirits",
+    date: "",
+    tags: ["額輪", "調情", "集體潛意識"],
+    spotlightZh: "現代社會並不把調情視為一種惡習，但事實上，沒有什麼比這個習慣更具傷害性了。",
+    spotlightEn: "Modern society does not regard flirting as a vice, but nothing is more grievously harmful than this habit."
   }
 ];

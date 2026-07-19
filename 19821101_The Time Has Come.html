@@ -222,6 +222,53 @@
   body.mode-en .body-text{ display:none; }
   body.mode-en .pull .zh-p{ display:none; }
 
+  /* ===== share button ===== */
+  .share-btn{
+    position:fixed;
+    right:1.4rem;
+    bottom:1.4rem;
+    width:2.7rem;
+    height:2.7rem;
+    border-radius:50%;
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    color:var(--gold);
+    font-size:1.05rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 4px 16px rgba(58,53,46,0.14);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    z-index:20;
+  }
+  .share-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 22px rgba(58,53,46,0.18);
+  }
+  .share-toast{
+    position:fixed;
+    right:1.4rem;
+    bottom:4.6rem;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.05em;
+    padding:0.5rem 1rem;
+    border-radius:999px;
+    opacity:0;
+    transform:translateY(6px);
+    transition:opacity 0.25s ease, transform 0.25s ease;
+    pointer-events:none;
+    z-index:20;
+    white-space:nowrap;
+  }
+  .share-toast.show{
+    opacity:0.95;
+    transform:translateY(0);
+  }
+
   @media (max-width:480px){
     .page{ padding:8vh 7vw 10vh; }
     .pull{ padding:2rem 1.4rem; }
@@ -230,6 +277,10 @@
 </head>
 <body class="mode-zh" data-quote-id="19821101_The Time Has Come">
 <div class="veil"></div>
+
+<button class="share-btn" id="share-btn" aria-label="分享這篇語錄" title="分享">⤴</button>
+<div class="share-toast" id="share-toast">連結已複製</div>
+
 <div class="page">
 
   <div class="eyebrow">
@@ -313,5 +364,47 @@
   setMode('zh');
 </script>
 
+<script>
+  (function(){
+    var shareBtn = document.getElementById('share-btn');
+    var toast = document.getElementById('share-toast');
+    if (!shareBtn) return;
+
+    var toastTimer = null;
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function(){
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
+    shareBtn.addEventListener('click', async function(){
+      var h1 = document.querySelector('h1');
+      var zhTitle = h1 ? h1.childNodes[0].textContent.trim() : document.title;
+      var shareData = {
+        title: zhTitle + ' ‧ 錫呂瑪塔吉靈性語錄',
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (e) {
+          // 使用者取消分享，不用特別處理
+        }
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast('連結已複製');
+      } catch (e) {
+        window.prompt('複製這個連結來分享：', window.location.href);
+      }
+    });
+  })();
+</script>
 </body>
 </html>
