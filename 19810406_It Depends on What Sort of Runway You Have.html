@@ -219,6 +219,9 @@
 
   body.mode-zh .en{ display:none; }
 
+  body.mode-en .body-text{ display:none; }
+  body.mode-en .pull .zh-p{ display:none; }
+
   @media (max-width:480px){
     .page{ padding:8vh 7vw 10vh; }
     .pull{ padding:2rem 1.4rem; }
@@ -239,6 +242,7 @@
   <div class="toggle-row">
     <button class="toggle-btn" data-mode="zh">中文</button>
     <button class="toggle-btn" data-mode="both">中英對照</button>
+    <button class="toggle-btn" data-mode="en">英文</button>
   </div>
 
   <div class="block">
