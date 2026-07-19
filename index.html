@@ -154,7 +154,7 @@
     gap:1rem;
     text-decoration:none;
     color:inherit;
-    padding:1.05rem 1.5rem;
+    padding:0.85rem 1.5rem;
     background:var(--paper-deep);
     border:1px solid var(--line);
     border-left:2px solid var(--gold);
@@ -171,19 +171,6 @@
     letter-spacing:0.04em;
     color:var(--ink);
     min-width:0;
-  }
-  .entry-title .en{
-    display:block;
-    margin-top:0.25rem;
-    font-family:"Helvetica Neue",Arial,sans-serif;
-    font-size:0.74rem;
-    font-weight:300;
-    font-style:italic;
-    letter-spacing:0.05em;
-    color:var(--ink-soft);
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
   }
 
   /* ===== search bar ===== */
@@ -353,7 +340,7 @@
 
   @media (max-width:480px){
     .page{ padding:8vh 7vw 10vh; }
-    .entry{ padding:0.95rem 1.2rem; }
+    .entry{ padding:0.75rem 1.2rem; }
   }
 </style>
 </head>
@@ -364,9 +351,7 @@
   <div class="eyebrow">
     <span class="zh-name">錫呂‧瑪塔吉‧涅瑪拉‧德維　靈性語錄</span>
   </div>
-  <h1>語錄選集
-    <span class="sub">Selected Quotations</span>
-  </h1>
+  <h1>語錄選集</h1>
 
   <div class="spotlight" id="spotlight">
     <div class="spotlight-label">專屬於你的今日靈性滋養</div>
@@ -444,10 +429,6 @@
     const title = document.createElement('div');
     title.className = 'entry-title';
     title.append(q.zhTitle);
-    const en = document.createElement('span');
-    en.className = 'en';
-    en.textContent = q.enTitle;
-    title.appendChild(en);
 
     const arrow = document.createElement('span');
     arrow.className = 'entry-arrow';
