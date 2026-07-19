@@ -129,15 +129,6 @@
     color:var(--ink);
     margin:0 0 1rem;
   }
-  .spotlight-en{
-    font-family:"Helvetica Neue",Arial,sans-serif;
-    font-size:0.85rem;
-    font-style:italic;
-    font-weight:300;
-    color:var(--ink-soft);
-    line-height:1.8;
-    margin:0 0 1.3rem;
-  }
   .spotlight-link{
     display:inline-block;
     font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
@@ -380,7 +371,6 @@
   <div class="spotlight" id="spotlight">
     <div class="spotlight-label">專屬於你的今日靈性滋養</div>
     <p class="spotlight-zh" id="spotlight-zh"></p>
-    <p class="spotlight-en" id="spotlight-en"></p>
     <a class="spotlight-link" id="spotlight-link" href="#">閱讀全文 →</a>
   </div>
 
@@ -589,7 +579,6 @@
   // ---- 隨機語錄 spotlight ----
   const pick = QUOTES_DATA[Math.floor(Math.random() * QUOTES_DATA.length)];
   document.getElementById('spotlight-zh').textContent = pick.spotlightZh;
-  document.getElementById('spotlight-en').textContent = pick.spotlightEn;
   document.getElementById('spotlight-link').href = pick.file;
 
   requestAnimationFrame(() => {
