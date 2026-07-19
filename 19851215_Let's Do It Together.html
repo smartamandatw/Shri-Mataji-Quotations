@@ -205,15 +205,15 @@
   }
 
   .quote-nav{
-    display:flex;
-    justify-content:space-between;
-    gap:1.5rem;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:start;
+    gap:1rem;
     margin-top:4rem;
     padding-top:1.8rem;
     border-top:1px solid var(--line);
   }
   .quote-nav a{
-    max-width:46%;
     text-decoration:none;
     color:var(--ink-soft);
     font-size:0.85rem;
@@ -231,9 +231,24 @@
     color:var(--gold);
     margin-bottom:0.4rem;
   }
+  .quote-nav .nav-prev{
+    text-align:left;
+  }
   .quote-nav .nav-next{
-    margin-left:auto;
     text-align:right;
+  }
+  .quote-nav .nav-home{
+    align-self:center;
+    text-align:center;
+    white-space:nowrap;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    color:var(--gold);
+    opacity:0.85;
+  }
+  .quote-nav .nav-home:hover{
+    opacity:1;
   }
 
   body.mode-zh .en{ display:none; }
@@ -307,6 +322,7 @@
     } else {
       html += '<span></span>';
     }
+    html += '<a class="nav-home" href="index.html">\u56de\u9996\u9801</a>';
     if (nextItem) {
       html += '<a class="nav-next" href="' + nextItem.file + '"><span class="dir">\u4e0b\u4e00\u7bc7 \u203a</span>' + nextItem.zhTitle + '</a>';
     } else {
